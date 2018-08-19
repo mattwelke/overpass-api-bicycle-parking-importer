@@ -1,0 +1,15 @@
+version: "3.0"
+
+services:
+
+  db:
+    image: "mongo:4.0"
+    ports:
+      - "27017:27017"
+
+  importer:
+    image: mwelke/overpass-api-bicycle-parking-importer
+    environment:
+      MONGODB_HOST: "db"
+    depends_on:
+      - "db"
