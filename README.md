@@ -4,7 +4,7 @@ Serves as a Docker image containing a program able to perform a **mongoimport** 
 
 ## Build
 
-**Note: You must be logged into the "mwelke" Docker Hub account to push the image. The build process is not meant to be performed by consumers of this image. The latest tagged images will be available in the [overpass-api-bicycle-parking-importer](https://hub.docker.com/r/mwelke/overpass-api-bicycle-parking-importer/) public Docker repository.
+**Note: You must be logged into the "mwelke" Docker Hub account to push the image.** The build process is not meant to be performed by consumers of this image. The latest tagged images are available for free, public use in the [mwelke/overpass-api-bicycle-parking-importer](https://hub.docker.com/r/mwelke/overpass-api-bicycle-parking-importer/) public Docker repository.
 
 1. Ensure `curl`, `jq`, and `Docker` are installed.
 1. Run `build_and_push.sh`.
