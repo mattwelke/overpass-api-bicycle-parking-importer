@@ -26,15 +26,19 @@ Each document will have a BSON structure like this:
 
 ```bson
 {
-    "_id" : NumberLong(4175096860),
+    "_id" : NumberLong(3013604535),
     "location" : {
         "type" : "Point",
         "coordinates" : [ 
-            -79.4679576, 
-            43.7720264
+            -79.4165008, 
+            43.7821196
         ]
     },
-    "tags" : {}
+    "tags" : {
+        "capacity" : "3",
+        "colour" : "gray",
+        "note" : "ring and post"
+    }
 }
 ```
 
