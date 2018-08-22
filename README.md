@@ -20,21 +20,39 @@ You can also use the command `.download_data.sh && ./program.sh` to download and
 
 ## Data Layout
 
-In the MongoDB database, the data will exist in the `local` database in a collection called `nodes`. Each document will have a shape like this:
+In the MongoDB database, the data will exist in the `local` database in a collection called `nodes`.
 
-```json
+Each document will have a BSON structure like this:
+
+```bson
 {
-    "_id" : 110075,
-    "type" : "node",
-    "lat" : 51.5342569,
-    "lon" : -0.1402758,
-    "tags" : {
-        "amenity" : "bicycle_parking",
-        "capacity" : "2"
-    }
+    "_id" : NumberLong(4175096860),
+    "location" : {
+        "type" : "Point",
+        "coordinates" : [ 
+            -79.4679576, 
+            43.7720264
+        ]
+    },
+    "tags" : {}
 }
 ```
 
-## Community Courtesy
+With a `2dsphere` index added to the `location` field, it can be queried with a geospatial query like `$nearSphere` like this:
 
-This tool performs a very exhaustive query against the main public OSM server. Use discretion when running the script multiple times. **Reminder - The image at mwelke/overpass-api-bicycle-parking-importer is prepared with this data and will not download this data redundantly**
+```javascript
+// MongoDB shell
+
+db.getCollection('nodes').find({
+    location: { $nearSphere: {
+        $geometry: {
+            type: "Point",
+            coordinates: [
+                -79.4397698,
+                43.755323
+            ]
+        },
+        $maxDistance: 10000
+    } }
+});
+```
