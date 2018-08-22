@@ -2,7 +2,7 @@
 
 PARAM_SKIP_DL=$1
 
-if [ ${PARAM_SKIP_DL} = "-s" ]; then
+if [ "${PARAM_SKIP_DL}" = "-s" ]; then
     echo "  Skipping download, using previous download file."
 
     if [ ! -f ./data ]; then
@@ -10,7 +10,7 @@ if [ ${PARAM_SKIP_DL} = "-s" ]; then
         exit 1
     fi
 
-    if [ ! $(cat ./data | jq > /dev/null 2> /dev/null ) ]; then
+    if ! jq . ./data > /dev/null 2>&1 ; then
         echo "  Previous download file present but not valid JSON. Cannot continue."
         exit 1
     fi
