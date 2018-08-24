@@ -25,6 +25,6 @@ for (const n of transformedNodes) {
 
 const outFile = fs.openSync('data_transformed.json', 'w');
 
-fs.writeSync(outFile, JSON.stringify(transformedNodes));
+fs.writeSync(outFile, JSON.stringify(transformedNodes, null, 4));
 
 console.info('Finished Node transform step.');
