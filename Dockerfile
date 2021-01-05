@@ -1,4 +1,4 @@
-FROM mongo:4.2.2
+FROM mongo:4.4.3
 
 COPY program.sh data_transformed.json /
 
